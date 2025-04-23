@@ -1,6 +1,5 @@
-// app/page.tsx
-
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -16,12 +15,12 @@ export default function Home() {
       </p>
 
       <div className="mt-6">
-        <a
+        <Link
           href="/counter"
           className="inline-block px-6 py-3 bg-sky-400 text-white font-semibold rounded-xl shadow hover:bg-sky-500 transition"
         >
           はじめよう
-        </a>
+        </Link>
       </div>
 
       <div className="mt-10">
