@@ -15,6 +15,15 @@ export default function Home() {
         Next HALでは、未来をかたちにする旅がはじまります。
       </p>
 
+      <div className="mt-6">
+        <a
+          href="/counter"
+          className="inline-block px-6 py-3 bg-sky-400 text-white font-semibold rounded-xl shadow hover:bg-sky-500 transition"
+        >
+          はじめよう
+        </a>
+      </div>
+
       <div className="mt-10">
         <Image
           src="/flower.png"
@@ -24,6 +33,7 @@ export default function Home() {
           className="rounded-2xl shadow-lg"
         />
       </div>
+
     </main>
   );
 }
