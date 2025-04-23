@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "next/link"; // ← これが必要！
 
 export default function Home() {
   return (
@@ -32,7 +32,6 @@ export default function Home() {
           className="rounded-2xl shadow-lg"
         />
       </div>
-
     </main>
   );
 }
