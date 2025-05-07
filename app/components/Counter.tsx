@@ -18,7 +18,7 @@ export default function Counter() {
     }
 
     return (
-        <main className="flex justify-center">
+        <section className="flex justify-center my-2">
             <div className="bg-white p-8 rounded-2xl shadow-lg w-80 text-center space-y-6">
                 <p className="text-4xl font-semibold text-sky-600">{count}</p>
                 <div className="flex justify-between gap-4">
@@ -42,6 +42,6 @@ export default function Counter() {
                     </button>
                 </div>
             </div>
-        </main>
+        </section>
     );
 }

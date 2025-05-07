@@ -5,6 +5,7 @@ const page = () => {
         <div>
             <h1 className="font-bold text-2xl text-center p-6">Counter</h1>
             <Counter />
+            <Counter />
         </div>
     );
 }
