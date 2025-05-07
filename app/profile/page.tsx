@@ -4,9 +4,9 @@ import profilePic from '@/public/profile.png'
 
 export default function ProfilePage() {
     return (
-        <main className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-6">
+        <section className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-6">
             <h1 className="text-3xl font-bold mb-8 text-pink-400">Profile</h1>
-            <div className="bg-white p-8 rounded-xl shadow-lg w-1/2 space-y-6">
+            <div className="bg-white p-8 rounded-xl w-1/2 space-y-6">
                 <div className="flex justify-center">
                     <div className="w-full rounded-xl overflow-hidden shadow-md">
                         <Image
@@ -42,6 +42,6 @@ export default function ProfilePage() {
                     </p>
                 </div>
             </div>
-        </main>
+        </section>
     )
 }
