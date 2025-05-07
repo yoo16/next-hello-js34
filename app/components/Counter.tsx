@@ -10,7 +10,12 @@ export default function Counter() {
     const [count, setCount] = useState(0);
 
     function handelIcrement() {
-        alert('+1');
+        // alert('+1');
+        setCount(count + 1);
+    }
+
+    function handelDecrement() {
+        setCount(count - 1);
     }
 
     return (
@@ -21,6 +26,11 @@ export default function Counter() {
                     className="bg-sky-600 px-3 py-2 text-white rounded-xl"
                     onClick={handelIcrement}
                 >+1
+                </button>
+                <button
+                    className="bg-sky-600 px-3 py-2 text-white rounded-xl"
+                    onClick={handelDecrement}
+                >-1
                 </button>
             </div>
         </div>
