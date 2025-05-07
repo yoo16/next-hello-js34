@@ -6,11 +6,16 @@ export default function Counter() {
     const [count, setCount] = useState(0);
 
     function handleIncrement() {
-        setCount(count + 1);
+        if (count < 10) {
+            setCount(count + 1);
+        }
     }
 
     function handleDecrement() {
-        setCount(count - 1);
+        // count が 0 より大きかったらマイナス
+        if (count > 0) {
+            setCount(count - 1);
+        }
     }
 
     function handleReset() {
