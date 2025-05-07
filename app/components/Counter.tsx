@@ -1,12 +1,16 @@
 "use client"
 
 // rfc と入力
-import React from 'react'
+// useState をインポート
+import React, { use, useState } from 'react'
+// import { useState } from 'react'
 
 export default function Counter() {
+    const [count, setCount] = useState(0);
+
     return (
         <div>
-            これはCounter Componentです。
+            <p className="text-center">{count}</p>
         </div>
     )
 }
