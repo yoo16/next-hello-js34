@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react";
-import Counter from "@/app/components/Counter";
+import Counter from "../components/Counter";
 
 export default function Page() {
     const [counters, setCounters] = useState<number[]>([0]);
