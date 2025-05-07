@@ -1,38 +1,47 @@
 "use client"
 
-// rfc と入力
-// useState をインポート
-import React, { use, useState } from 'react'
-// import { useState } from 'react'
+import React, { useState } from 'react'
 
 export default function Counter() {
-    // state
     const [count, setCount] = useState(0);
 
-    function handelIcrement() {
-        // alert('+1');
+    function handleIncrement() {
         setCount(count + 1);
     }
 
-    function handelDecrement() {
+    function handleDecrement() {
         setCount(count - 1);
     }
 
+    function handleReset() {
+        setCount(0);
+    }
+
     return (
-        <div>
-            <p className="text-center">{count}</p>
-            <div>
-                <button
-                    className="bg-sky-600 px-3 py-2 text-white rounded-xl"
-                    onClick={handelIcrement}
-                >+1
-                </button>
-                <button
-                    className="bg-sky-600 px-3 py-2 text-white rounded-xl"
-                    onClick={handelDecrement}
-                >-1
-                </button>
+        <main className="flex justify-center">
+            <div className="bg-white p-8 rounded-2xl shadow-lg w-80 text-center space-y-6">
+                <p className="text-4xl font-semibold text-sky-600">{count}</p>
+                <div className="flex justify-between gap-4">
+                    <button
+                        className="flex-1 bg-sky-600 hover:bg-sky-700 text-white py-2 rounded-xl transition"
+                        onClick={handleIncrement}
+                    >
+                        +1
+                    </button>
+                    <button
+                        className="flex-1 bg-gray-400 hover:bg-gray-500 text-white py-2 rounded-xl transition"
+                        onClick={handleReset}
+                    >
+                        Reset
+                    </button>
+                    <button
+                        className="flex-1 bg-sky-600 hover:bg-sky-700 text-white py-2 rounded-xl transition"
+                        onClick={handleDecrement}
+                    >
+                        -1
+                    </button>
+                </div>
             </div>
-        </div>
-    )
+        </main>
+    );
 }
