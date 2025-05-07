@@ -5,6 +5,8 @@ import React from 'react'
 
 export default function Counter() {
     return (
-        <div>Counter</div>
+        <div>
+            これはCounter Componentです。
+        </div>
     )
 }
