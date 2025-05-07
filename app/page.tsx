@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link"; // ← これが必要！
+import Counter from "./components/Counter";
 
 export default function Home() {
   return (
@@ -21,6 +22,10 @@ export default function Home() {
         >
           はじめよう
         </Link>
+      </div>
+
+      <div className="my-4">
+        <Counter />
       </div>
 
       <div className="mt-10">

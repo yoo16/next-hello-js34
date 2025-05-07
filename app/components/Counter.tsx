@@ -24,9 +24,9 @@ export default function Counter() {
                 <div className="flex justify-between gap-4">
                     <button
                         className="flex-1 bg-sky-600 hover:bg-sky-700 text-white py-2 rounded-xl transition"
-                        onClick={handleIncrement}
+                        onClick={handleDecrement}
                     >
-                        +1
+                        -1
                     </button>
                     <button
                         className="flex-1 bg-gray-400 hover:bg-gray-500 text-white py-2 rounded-xl transition"
@@ -36,9 +36,9 @@ export default function Counter() {
                     </button>
                     <button
                         className="flex-1 bg-sky-600 hover:bg-sky-700 text-white py-2 rounded-xl transition"
-                        onClick={handleDecrement}
+                        onClick={handleIncrement}
                     >
-                        -1
+                        +1
                     </button>
                 </div>
             </div>
