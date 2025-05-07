@@ -1,16 +1,15 @@
 import React from 'react'
 import Image from 'next/image'
-import profilePic from '@/public/profile.png'
 
 export default function ProfilePage() {
     return (
         <section className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-6">
             <h1 className="text-3xl font-bold mb-8 text-pink-400">Profile</h1>
-            <div className="bg-white p-8 rounded-xl w-1/2 space-y-6">
+            <div className="bg-white p-8 rounded-xl w-2/3 space-y-6">
                 <div className="flex justify-center">
                     <div className="w-full rounded-xl overflow-hidden shadow-md">
                         <Image
-                            src={profilePic}
+                            src="/profile.png"
                             alt="白石美優の写真"
                             width={192}
                             height={192}
