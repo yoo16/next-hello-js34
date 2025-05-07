@@ -1,14 +1,33 @@
-import Counter from "../components/Counter";
+"use client"
 
-const page = () => {
+import React, { useState } from "react";
+import Counter from "@/app/components/Counter";
+
+export default function Page() {
+    const [counters, setCounters] = useState<number[]>([0]);
+
+    const handleAdd = () => {
+        setCounters([...counters, counters.length]); // 新しいIDを追加
+    };
+
     return (
-        <div>
-            <h1 className="font-bold text-2xl text-center p-6">Counter</h1>
-            <Counter />
-            <Counter />
-            <Counter />
-        </div>
+        <main className="min-h-screen bg-gray-100 p-8">
+            <h1 className="font-bold text-3xl text-center mb-6">Counter List</h1>
+
+            <div className="flex justify-center mb-6">
+                <button
+                    onClick={handleAdd}
+                    className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-xl shadow"
+                >
+                    Add Counter
+                </button>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-6">
+                {counters.map((id) => (
+                    <Counter key={id} />
+                ))}
+            </div>
+        </main>
     );
 }
-
-export default page;
