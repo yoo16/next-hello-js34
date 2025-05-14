@@ -38,6 +38,12 @@ export default function MemoList() {
                         追加
                     </button>
                 </div>
+                {/* メモがない時「メモがありません」メッセージ */}
+                {memos.length === 0 && (
+                    <div className="text-gray-500 text-center">
+                        メモがありません
+                    </div>
+                )}
 
                 {/* メモの一覧表示 */}
                 <div className="space-y-3">
