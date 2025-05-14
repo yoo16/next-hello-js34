@@ -62,8 +62,8 @@ export default function MemoList() {
                                     console.log('前回の memos:', memos)
                                 }}
                                 className="text-red-500 ml-4">
-                                    削除
-                                </button>
+                                削除
+                            </button>
                         </div>
                     ))}
                 </div>
