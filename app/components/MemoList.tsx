@@ -7,6 +7,7 @@ export default function MemoList() {
     // useState で text を管理
     const [text, setText] = useState<string>('')
     // useState で memos を管理
+    const [memos, setMemos] = useState<string[]>([])
 
     // text を更新する関数
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,6 +18,14 @@ export default function MemoList() {
     }
 
     // memos を更新する関数
+    const handleAddMemo = () => {
+        // memos に text を追加
+        setMemos([...memos, text])
+        // text を空にする
+        setText('')
+
+        console.log('メモが追加されました:', memos)
+    }
 
     return (
         <div className="flex justify-center mt-10">
@@ -28,7 +37,10 @@ export default function MemoList() {
                     onChange={handleChange}
                     value={text}
                 />
-                <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+                <button
+                    onClick={handleAddMemo}
+                    disabled={!text}
+                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
                     追加
                 </button>
             </div>
