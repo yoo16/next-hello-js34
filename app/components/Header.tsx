@@ -10,6 +10,7 @@ export default function Header() {
                     <Link href="/" className="text-white hover:underline">Home</Link>
                     <Link href="/counter" className="text-white hover:underline">Counter</Link>
                     <Link href="/profile" className="text-white hover:underline">Profile</Link>
+                    <Link href="/memo" className="text-white hover:underline">Memo</Link>
                 </nav>
             </div>
         </header>
