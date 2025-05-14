@@ -53,6 +53,17 @@ export default function MemoList() {
                             className="bg-white p-4 rounded-xl shadow border border-gray-200"
                         >
                             {memo}
+                            {/* 削除ボタン追加 */}
+                            <button
+                                onClick={() => {
+                                    const newMemos = memos.filter((_, i) => i !== index)
+                                    setMemos(newMemos)
+                                    console.log('メモが削除されました:', memo)
+                                    console.log('前回の memos:', memos)
+                                }}
+                                className="text-red-500 ml-4">
+                                    削除
+                                </button>
                         </div>
                     ))}
                 </div>
