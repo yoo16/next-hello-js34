@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function MemoList() {
+    // useState で text を管理
+    const [text, setText] = useState<string>('')
+
     return (
         <div className="flex justify-center mt-10">
             <div className="flex space-x-4">
