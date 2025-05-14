@@ -58,8 +58,6 @@ export default function MemoList() {
                                 onClick={() => {
                                     const newMemos = memos.filter((_, i) => i !== index)
                                     setMemos(newMemos)
-                                    console.log('メモが削除されました:', memo)
-                                    console.log('前回の memos:', memos)
                                 }}
                                 className="text-red-500 ml-4">
                                 削除
