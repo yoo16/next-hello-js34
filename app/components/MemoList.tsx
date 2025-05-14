@@ -9,7 +9,14 @@ export default function MemoList() {
         setText(event.target.value)
         console.log(event.target.value)
     }
-
+    // 質問項目：change イベントを追加して
+    <input
+        type="text"
+        placeholder="入力してください"
+        value={text}
+        onChange={handleChange}
+        className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+    />
     return (
         <div className="flex justify-center mt-10">
             <div className="flex space-x-4">
