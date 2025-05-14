@@ -4,6 +4,12 @@ export default function MemoList() {
     // useState で text を管理
     const [text, setText] = useState<string>('')
 
+    // text を更新する関数
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setText(event.target.value)
+        console.log(event.target.value)
+    }
+
     return (
         <div className="flex justify-center mt-10">
             <div className="flex space-x-4">
