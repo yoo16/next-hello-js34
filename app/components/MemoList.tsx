@@ -1,16 +1,22 @@
 "use client"
 
-import React, { useState } from 'react'
+// useState をインポート 
+import { useState } from 'react'
 
 export default function MemoList() {
     // useState で text を管理
     const [text, setText] = useState<string>('')
+    // useState で memos を管理
 
     // text を更新する関数
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        // text を更新
         setText(event.target.value)
+        // コンソールに入力された値を表示
         console.log(event.target.value)
     }
+
+    // memos を更新する関数
 
     return (
         <div className="flex justify-center mt-10">
