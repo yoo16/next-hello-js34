@@ -23,12 +23,13 @@ export default function MemoList() {
         setMemos([...memos, text])
         // text を空にする
         setText('')
-
-        console.log('メモが追加されました:', memos)
+        // コンソールに memos を表示（ワンテンポ遅れる）
+        console.log('メモが追加されました:', text)
+        console.log('前回の memos:', memos)
     }
 
     return (
-        <div className="flex justify-center mt-10">
+        <div className="flex flex-col justify-center mt-10">
             <div className="flex space-x-4">
                 <input
                     type="text"
@@ -43,6 +44,17 @@ export default function MemoList() {
                     className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
                     追加
                 </button>
+            </div>
+
+            {/* メモの一覧表示 */}
+            <div className="flex flex-col space-y-2">
+                {memos.map((memo, index) => (
+                    <div
+                        key={index}
+                        className="bg-gray-100 p-4 rounded shadow">
+                        {memo}
+                    </div>
+                ))}
             </div>
         </div>
     )
