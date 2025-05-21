@@ -9,6 +9,8 @@ export default function MemoList() {
     const [text, setText] = useState<string>('')
     // メモのリストの状態(State)を管理するためのuseStateフック
     const [memos, setMemos] = useState<string[]>([])
+    // メッセージの状態(State)を管理するためのuseStateフック
+    const [message, setMessage] = useState<string>('メモを入力してください')
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setText(event.target.value)
