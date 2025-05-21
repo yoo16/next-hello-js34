@@ -13,6 +13,7 @@ export default function MemoList() {
     const [message, setMessage] = useState<string>('メモを入力してください')
 
     // useEffectフックを使って、message を3秒後に消す
+    // トースト通知（Toast Notification）
     useEffect(() => {
         const timer = setTimeout(() => {
             // メッセージを空にする
@@ -33,7 +34,9 @@ export default function MemoList() {
         // テキストボックスを空にする
         setText('')
         // addMemo() でAPIにメモを送信（非同期処理）
-        await addMemo(text)
+        const result = await addMemo(text)
+        // メッセージを表示
+        setMessage(result.message)
     }
 
     return (
