@@ -42,9 +42,13 @@ export default function MemoList() {
     return (
         <main className="min-h-screen bg-gray-50 flex items-start justify-center py-10 px-4">
             <div className="w-full max-w-xl space-y-6">
-                <div>
-                    {message}
-                </div>
+                {message &&
+                    (
+                        <div className="text-center bg-green-200 text-green-800 p-3 rounded">
+                            {message}
+                        </div>
+                    )
+                }
                 {/* 入力フォーム */}
                 <div className="flex space-x-4">
                     <input
