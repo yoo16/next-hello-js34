@@ -3,7 +3,9 @@
 import { useState } from 'react'
 
 export default function MemoList() {
+    // テキストボックスの状態(State)を管理するためのuseStateフック
     const [text, setText] = useState<string>('')
+    // メモのリストの状態(State)を管理するためのuseStateフック
     const [memos, setMemos] = useState<string[]>([])
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
