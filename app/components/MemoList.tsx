@@ -15,6 +15,7 @@ export default function MemoList() {
     // useEffectフックを使って、message を3秒後に消す
     useEffect(() => {
         const timer = setTimeout(() => {
+            // メッセージを空にする
             setMessage('')
         }, 3000)
         return () => clearTimeout(timer)
