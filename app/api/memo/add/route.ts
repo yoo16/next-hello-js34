@@ -1,4 +1,4 @@
-// GETルーティング作成
+// POSTルーティング作成
 import { NextResponse } from 'next/server';
 
 // http://localhost:3000/api/memo/add
