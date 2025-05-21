@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { addMemo } from '../services/MemoService'
 
 
@@ -11,6 +11,14 @@ export default function MemoList() {
     const [memos, setMemos] = useState<string[]>([])
     // メッセージの状態(State)を管理するためのuseStateフック
     const [message, setMessage] = useState<string>('メモを入力してください')
+
+    // useEffectフックを使って、message を3秒後に消す
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setMessage('')
+        }, 3000)
+        return () => clearTimeout(timer)
+    }, [message])
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setText(event.target.value)
