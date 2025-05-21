@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from 'react'
+import { addMemo } from '../services/MemoService'
+
 
 export default function MemoList() {
     // テキストボックスの状態(State)を管理するためのuseStateフック
@@ -13,11 +15,12 @@ export default function MemoList() {
         console.log(event.target.value)
     }
 
-    const handleAddMemo = () => {
+    const handleAddMemo = async () => {
         setMemos([...memos, text])
         setText('')
-        console.log('メモが追加されました:', text)
-        console.log('前回の memos:', memos)
+
+        // APIにPOSTリクエストを送信
+        await addMemo(text)
     }
 
     return (
