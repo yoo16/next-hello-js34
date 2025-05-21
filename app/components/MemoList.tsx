@@ -15,11 +15,13 @@ export default function MemoList() {
         console.log(event.target.value)
     }
 
+    // async/await で非同期通信
     const handleAddMemo = async () => {
+        // memosの状態を更新
         setMemos([...memos, text])
+        // テキストボックスを空にする
         setText('')
-
-        // APIにPOSTリクエストを送信
+        // addMemo() でAPIにメモを送信（非同期処理）
         await addMemo(text)
     }
 
