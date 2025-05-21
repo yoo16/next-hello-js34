@@ -12,6 +12,7 @@ export async function addMemo(text: string) {
     }
     // APIサーバからのJSONレスポンスをJavaScriptオブジェクトに変換
     const result = await res.json();
+    console.log(result);
     if (res.ok) {
         return result;
     }
