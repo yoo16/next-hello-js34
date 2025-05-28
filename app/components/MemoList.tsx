@@ -49,6 +49,13 @@ export default function MemoList() {
         setMessage(result.message)
     }
 
+    const handleRemoveMemo = async (index: number) => {
+        // メモを削除する処理
+        if (confirm('本当に削除しますか？')) {
+
+        }
+    }
+
     return (
         <main className="min-h-screen bg-gray-50 flex items-start justify-center py-10 px-4">
             <div className="w-full max-w-xl space-y-6">
@@ -90,11 +97,14 @@ export default function MemoList() {
                             key={index}
                             className="bg-white p-4 rounded-xl shadow border border-gray-200"
                         >
-                            {memo}
                             {/* 削除ボタン追加 */}
-                            <button className="bg-red-500 text-white px-3 py-2 text-xs ml-4 rounded">
+                            <button
+                                onClick={() => handleRemoveMemo(index)}
+                                className="bg-red-500 text-white px-3 py-2 text-xs mr-4 rounded"
+                            >
                                 削除
                             </button>
+                            {memo}
                         </div>
                     ))}
                 </div>
