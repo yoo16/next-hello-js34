@@ -12,6 +12,15 @@ export default function MemoList() {
     // メッセージの状態(State)を管理するためのuseStateフック
     const [message, setMessage] = useState<string>('メモを入力してください')
 
+    useEffect(() => {
+        const fetchMemos = async () => {
+            const result = await loadMemos();
+            setMessage(result?.message);
+            setMemos(result?.memos);
+        }
+        fetchMemos();
+    }, []);
+
     // useEffectフックを使って、message を3秒後に消す
     // トースト通知（Toast Notification）
     useEffect(() => {
