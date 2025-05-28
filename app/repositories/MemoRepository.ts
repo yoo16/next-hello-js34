@@ -26,10 +26,10 @@ async function ensureFile() {
 export async function getAllMemos() {
     // TODO: ensureFile を呼び出してファイルを準備
     ensureFile();
-
     // TODO: readFile() でファイルを読み込み
     const json = await readFile(FILE_PATH, "utf8");
-
+    // ファイルが空の場合は空の配列を返す
+    if (!json) return [];
     // TODO: JSON を JavaScript オブジェクトに変換して返す
     return JSON.parse(json);
 }

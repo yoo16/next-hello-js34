@@ -92,12 +92,7 @@ export default function MemoList() {
                         >
                             {memo}
                             {/* 削除ボタン追加 */}
-                            <button
-                                onClick={() => {
-                                    const newMemos = memos.filter((_, i) => i !== index)
-                                    setMemos(newMemos)
-                                }}
-                                className="text-red-500 ml-4">
+                            <button className="bg-red-500 text-white px-3 py-2 text-xs ml-4 rounded">
                                 削除
                             </button>
                         </div>
