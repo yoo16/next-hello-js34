@@ -13,8 +13,13 @@ const FILE_PATH = join(DATA_DIR, "memos.json");
 // データファイルの準備
 async function ensureFile() {
     // TODO: data フォルダが存在しない場合は作成
-
+    if (!existsSync(DATA_DIR)) {
+        await mkdir(DATA_DIR, { recursive: true });
+    }
     // TODO: data/memos.json が存在しない場合は空の配列を書き込む
+    if (!existsSync(FILE_PATH)) {
+        await writeFile(FILE_PATH, JSON.stringify([], null, 2), "utf8");
+    }
 }
 
 // メモファイルの内容を読み込む関数
