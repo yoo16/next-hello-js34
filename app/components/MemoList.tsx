@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from 'react'
-import { addMemo } from '../services/MemoService'
+import { addMemo, loadMemos } from '../services/MemoService'
 
 
 export default function MemoList() {
@@ -12,6 +12,7 @@ export default function MemoList() {
     // メッセージの状態(State)を管理するためのuseStateフック
     const [message, setMessage] = useState<string>('メモを入力してください')
 
+    // 初回レンダリング時にメモをAPIから取得するための処理
     useEffect(() => {
         const fetchMemos = async () => {
             const result = await loadMemos();

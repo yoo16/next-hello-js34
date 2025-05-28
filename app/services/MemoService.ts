@@ -17,3 +17,14 @@ export async function addMemo(text: string) {
         return result;
     }
 }
+
+// メモ一覧を取得する関数
+export async function loadMemos(){
+    const res = await fetch("/api/memo/list");
+    const result = await res.json();
+    if (res.ok) {
+        return result;
+    } else {
+        return { message: "メモ一覧取得に失敗しました", memos: [] };
+    }
+}
