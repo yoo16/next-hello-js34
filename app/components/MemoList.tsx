@@ -1,9 +1,7 @@
 "use client"
 
 import { useEffect, useState } from 'react'
-import { addMemo, loadMemos } from '../services/MemoService'
-import { removeMemo } from '../repositories/MemoRepository'
-
+import { addMemo, loadMemos, removeMemo } from '../services/MemoService'
 
 export default function MemoList() {
     // テキストボックスの状態(State)を管理するためのuseStateフック
@@ -58,6 +56,7 @@ export default function MemoList() {
             // APIに削除リクエストを送信
             const result = await removeMemo(index);
             // メッセージを表示
+            setMessage(result.message);
         }
     }
 
