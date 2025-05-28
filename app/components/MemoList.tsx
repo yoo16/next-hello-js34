@@ -52,7 +52,8 @@ export default function MemoList() {
     const handleRemoveMemo = async (index: number) => {
         // メモを削除する処理
         if (confirm('本当に削除しますか？')) {
-
+            // メモのリストを更新
+            setMemos(memos.filter((_, i) => i !== index));
         }
     }
 
