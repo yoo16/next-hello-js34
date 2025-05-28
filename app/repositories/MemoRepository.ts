@@ -25,10 +25,13 @@ async function ensureFile() {
 // メモファイルの内容を読み込む関数
 export async function getAllMemos() {
     // TODO: ensureFile を呼び出してファイルを準備
+    ensureFile();
 
     // TODO: readFile() でファイルを読み込み
+    const json = await readFile(FILE_PATH, "utf8");
 
-    // TODO: JSON.parse() でパースして返す
+    // TODO: JSON を JavaScript オブジェクトに変換して返す
+    return JSON.parse(json);
 }
 
 // メモファイルにメモを追加する関数
