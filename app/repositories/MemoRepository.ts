@@ -37,12 +37,13 @@ export async function getAllMemos() {
 // メモファイルにメモを追加する関数
 export async function addMemo(text: string) {
     // TODO: getAllMemos() で既存のメモを取得
-
+    const memos = await getAllMemos();
     // TODO: 新しいメモを追加
-
+    memos.push(text)
     // TODO: メモをJSON文字列に変換
-
+    const json = JSON.stringify(memos, null, 2);
     // TODO: writeFile() でファイルに書き込む
+    await writeFile(FILE_PATH, json, "utf8");
 }
 
 
