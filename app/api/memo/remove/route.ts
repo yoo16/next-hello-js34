@@ -2,12 +2,12 @@
 import { removeMemo } from '@/app/repositories/MemoRepository';
 import { NextResponse } from 'next/server';
 
-// http://localhost:3000/api/memo/add
+// http://localhost:3000/api/memo/remove
 export async function POST(req: Request) {
-    // リクエストからデータを取得
+    // リクエストから index を取得
     const { index } = await req.json();
 
-    // TODO: text をRDBまたはファイルに保存
+    // TODO: ファイルから index でメモを削除
     await removeMemo(index);
 
     // レスポンスデータ作成
