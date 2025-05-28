@@ -29,3 +29,24 @@ export async function loadMemos(){
         return { message: "メモ一覧取得に失敗しました", memos: [] };
     }
 }
+
+// メモを削除する関数
+export async function removeMemo(index: number) {
+    // http://localhost:3000/api/memo/remove 
+    // にPOSTリクエスト&レスポンス
+    const res = await fetch("/api/memo/remove", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ index }),
+    });
+    if (!res.ok) {
+        // レスポンスが200 OKでない場合
+        return { message: "メモの削除に失敗しました" };
+    }
+    // APIサーバからのJSONレスポンスをJavaScriptオブジェクトに変換
+    const result = await res.json();
+    console.log(result);
+    if (res.ok) {
+        return result;
+    }
+}
