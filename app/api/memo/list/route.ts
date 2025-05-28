@@ -6,7 +6,7 @@ import { NextResponse } from 'next/server';
 export async function GET() {
     // dummyデータを作成
     // TODO: DBから取得するように修正
-    const memos = getAllMemos();
+    const memos = await getAllMemos();
     const data = {
         message: "メモ一覧を取得しました",
         memos: memos,
