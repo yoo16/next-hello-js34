@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { addMemo, loadMemos } from '../services/MemoService'
+import { removeMemo } from '../repositories/MemoRepository'
 
 
 export default function MemoList() {
@@ -54,6 +55,9 @@ export default function MemoList() {
         if (confirm('本当に削除しますか？')) {
             // メモのリストを更新
             setMemos(memos.filter((_, i) => i !== index));
+            // APIに削除リクエストを送信
+            const result = await removeMemo(index);
+            // メッセージを表示
         }
     }
 

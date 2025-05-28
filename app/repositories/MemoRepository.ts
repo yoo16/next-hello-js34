@@ -1,3 +1,5 @@
+'use server';
+
 // readFile, writeFile, mkdir をインポート
 import { readFile, writeFile, mkdir } from 'fs/promises';
 // existsSync をインポート
