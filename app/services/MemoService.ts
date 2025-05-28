@@ -20,6 +20,7 @@ export async function addMemo(text: string) {
 
 // メモ一覧を取得する関数
 export async function loadMemos(){
+    // APIサーバからメモ一覧を取得する
     const res = await fetch("/api/memo/list");
     const result = await res.json();
     if (res.ok) {
