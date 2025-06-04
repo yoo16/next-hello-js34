@@ -6,6 +6,12 @@ import React, { useState } from 'react'
 export default function AIBot() {
     const [message, setMessage] = useState("Geminiに聞いてみよう！");
 
+    const sendMessage = async () => {
+        if (confirm('Geminiに聞いてみますか？')) {
+            setMessage("Geminiに聞いています...");
+        }
+    };
+
     return (
         <div className="mx-auto max-w-2xl p-6 bg-white rounded-lg shadow-md space-y-4">
             <h2 className="text-2xl font-bold">教えて！Gemini!</h2>
