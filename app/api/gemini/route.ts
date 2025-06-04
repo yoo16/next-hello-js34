@@ -8,7 +8,27 @@ export async function GET(req: NextRequest) {
 
     // Google GenAI を生成
     const ai = new GoogleGenAI({ apiKey: API_KEY });
-
-    const data = { message: API_KEY };
+    // プロンプト内容
+    const prompt = 'Geminiは何食べたい？';
+    // Geminiに送信するコンテンツを作成
+    const contents = [
+        {
+            parts: [
+                {
+                    text: prompt,
+                },
+            ],
+        },
+    ];
+    // GeminiAPIにリクエスト
+    const response = await ai.models.generateContent({
+        model: 'gemini-2.0-flash',
+        config: { responseMimeType: 'text/plain' },
+        contents,
+    });
+    // レスポンスからテキストを取得
+    const text = response.candidates?.[0]?.content?.parts?.[0]?.text || 'No response';
+    // レスポンスをJSON形式で返す
+    const data = { message: text };
     return NextResponse.json(data);
 }
