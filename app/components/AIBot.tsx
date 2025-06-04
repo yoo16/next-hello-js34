@@ -11,7 +11,10 @@ export default function AIBot() {
 
     const sendMessage = async () => {
         if (text && confirm('Geminiに聞いてみますか？')) {
-            setMessage("Geminiに聞いています...");
+            // setMessage("Geminiに聞いています...");
+            // ローディングフラグをオンにする
+            setIsLoading(true);
+            // APIにリクエストを送信
             const res = await fetch('/api/gemini',
                 {
                     method: 'POST',
@@ -23,6 +26,8 @@ export default function AIBot() {
             );
             const data = await res.json();
             setMessage(data.message);
+            // ローディングフラグをオフにする
+            setIsLoading(false);
         }
     };
 
