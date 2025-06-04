@@ -15,7 +15,7 @@ export default function AIBot() {
                     method: 'POST',
                     body: JSON.stringify({ "text": text }),
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Content-Type': 'application/json',
                     },
                 }
             );
