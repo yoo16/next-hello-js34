@@ -2,14 +2,18 @@ import { GoogleGenAI } from "@google/genai";
 import { NextRequest, NextResponse } from "next/server";
 
 // http://localhost:3000/api/gemini
-export async function GET(req: NextRequest) {
+export async function POST(req: NextRequest) {
     const API_KEY = process.env.GEMINI_API_KEY;
     if (!API_KEY) return;
 
     // Google GenAI を生成
     const ai = new GoogleGenAI({ apiKey: API_KEY });
     // プロンプト内容
-    const prompt = 'Geminiは何食べたい？';
+    // const prompt = 'Geminiは何食べたい？';
+    // JSONから text を取得
+    const body = await req.json();
+    const prompt = body.text;
+    // const prompt = 'Geminiは何食べたい？';
     // Geminiに送信するコンテンツを作成
     const contents = [
         {
