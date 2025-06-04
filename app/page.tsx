@@ -43,8 +43,6 @@ export default function Home() {
           className="rounded-2xl shadow-lg"
         />
       </div>
-
-      <Loading />
     </main>
   );
 }
