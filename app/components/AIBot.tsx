@@ -7,6 +7,7 @@ import Loading from './Loading';
 export default function AIBot() {
     const [message, setMessage] = useState("Geminiに聞いてみよう！");
     const [text, setText] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const sendMessage = async () => {
         if (text && confirm('Geminiに聞いてみますか？')) {
@@ -45,7 +46,8 @@ export default function AIBot() {
                 教えて!Gemini!
             </button>
 
-            <Loading />
+            {/* ローディング表示 */}
+            {isLoading && <Loading />}
         </div>
     )
 }
