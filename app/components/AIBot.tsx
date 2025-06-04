@@ -19,6 +19,7 @@ export default function AIBot() {
                 {message}
             </div>
             <button
+                onClick={sendMessage}
                 className="px-6 py-3 bg-sky-600 text-white rounded-xl shadow hover:bg-sky-700 cursor-pointer">
                 教えて!Gemini!
             </button>
