@@ -1,3 +1,5 @@
+"use client"
+
 // rfc で作成
 import React, { useState } from 'react'
 
