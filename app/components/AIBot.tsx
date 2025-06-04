@@ -9,6 +9,9 @@ export default function AIBot() {
     const sendMessage = async () => {
         if (confirm('Geminiに聞いてみますか？')) {
             setMessage("Geminiに聞いています...");
+            const res = await fetch('/api/gemini');
+            const data = await res.json();
+            setMessage(data.message);
         }
     };
 
