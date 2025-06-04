@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
     // const prompt = 'Geminiは何食べたい？';
     // JSONから text を取得
     const body = await req.json();
-    const prompt = body.text;
+    const prompt = "つぎの質問を単語で答えて\n\n" + body.text;
     // const prompt = 'Geminiは何食べたい？';
     // Geminiに送信するコンテンツを作成
     const contents = [
