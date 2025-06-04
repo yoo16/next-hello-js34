@@ -2,6 +2,7 @@
 
 // rfc で作成
 import React, { useState } from 'react'
+import Loading from './Loading';
 
 export default function AIBot() {
     const [message, setMessage] = useState("Geminiに聞いてみよう！");
@@ -43,6 +44,8 @@ export default function AIBot() {
                 className="px-6 py-3 bg-sky-600 text-white rounded-xl shadow hover:bg-sky-700 cursor-pointer">
                 教えて!Gemini!
             </button>
+
+            <Loading />
         </div>
     )
 }
