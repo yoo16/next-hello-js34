@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link"; // ← これが必要！
 import Counter from "./components/Counter";
+import AIBot from "./components/AIBot";
 
 export default function Home() {
   return (
@@ -22,6 +23,10 @@ export default function Home() {
         >
           はじめよう
         </Link>
+      </div>
+
+      <div className="my-4">
+        <AIBot />
       </div>
 
       <div className="my-4">
