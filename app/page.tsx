@@ -3,6 +3,7 @@ import Link from "next/link";
 import Counter from "./components/Counter";
 import AIBot from "./components/AIBot";
 import ImageUploadForm from "./components/ImageUploadForm";
+import ImageGenerateForm from "./components/ImageGenerateForm";
 
 export default function Home() {
   return (
@@ -32,6 +33,10 @@ export default function Home() {
 
       <div className="my-4">
         <ImageUploadForm />
+      </div>
+
+      <div className="my-4">
+        <ImageGenerateForm />
       </div>
 
       <div className="my-4">
