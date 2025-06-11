@@ -24,7 +24,7 @@ export async function whatsImage(file: File): Promise<string> {
                         data: base64,
                     },
                 },
-                { text: "この写真は何？" },
+                { text: "この材料でレシピを考えて。イタリアンで。" },
             ],
         },
     ];
