@@ -12,9 +12,11 @@ export default function CameraPage() {
         const width = mountRef.current.clientWidth;
         const height = mountRef.current.clientHeight;
 
+        // シーン
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0xeeeeee);
 
+        // カメラ
         const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
         camera.position.set(0, 0, 5);
 
@@ -22,16 +24,19 @@ export default function CameraPage() {
         renderer.setSize(width, height);
         mountRef.current.appendChild(renderer.domElement);
 
+        // ライト（光源）
         const light = new THREE.DirectionalLight(0xffffff, 1);
         light.position.set(0, 1, 1);
         scene.add(light);
 
+        // 立方体
         const cube = new THREE.Mesh(
             new THREE.BoxGeometry(),
             new THREE.MeshStandardMaterial({ color: 0x0077ff })
         );
         cube.position.x = -1.5;
 
+        // 球体
         const sphere = new THREE.Mesh(
             new THREE.SphereGeometry(0.5, 32, 32),
             new THREE.MeshStandardMaterial({ color: 0xff7700 })
