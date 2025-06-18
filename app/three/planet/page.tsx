@@ -133,7 +133,9 @@ export default function PlanetScene() {
                 camera.lookAt(targetPos);
             }
 
-            renderer.render(scene, camera);
+            if (camera) {
+                renderer.render(scene, camera);
+            }
         }
 
         animate();
