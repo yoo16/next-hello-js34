@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-// Three.js のインポート
 import * as THREE from 'three';
 
 type Planet = {
@@ -27,6 +26,7 @@ export default function PlanetScene() {
     const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
     const sceneRef = useRef<THREE.Scene | null>(null);
     const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
+    const followTargetRef = useRef<THREE.Mesh | null>(null); // 👈 追従対象
 
     const zoom = useRef({
         active: false,
@@ -39,7 +39,6 @@ export default function PlanetScene() {
     const defaultCameraPos = new THREE.Vector3(0, 150, 250);
     const defaultLookAt = new THREE.Vector3(0, 0, 0);
 
-    // APIから惑星データを取得
     useEffect(() => {
         fetch('/api/planets')
             .then(res => res.json())
@@ -49,12 +48,10 @@ export default function PlanetScene() {
     useEffect(() => {
         if (planetsData.length === 0) return;
 
-        // シーンの初期化
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0x000000);
         sceneRef.current = scene;
 
-        // カメラを作成
         const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1500);
         camera.position.copy(defaultCameraPos);
         camera.lookAt(defaultLookAt);
@@ -65,18 +62,15 @@ export default function PlanetScene() {
         containerRef.current?.appendChild(renderer.domElement);
         rendererRef.current = renderer;
 
-        // 太陽
         const sun = new THREE.Mesh(
             new THREE.SphereGeometry(10, 32, 32),
             new THREE.MeshBasicMaterial({ color: 0xff5500 })
         );
         scene.add(sun);
 
-        // 環境光とポイントライト
         const ambient = new THREE.AmbientLight(0xffffff, 0.4);
         scene.add(ambient);
 
-        // ポイントライト
         const pointLight = new THREE.PointLight(0xffffff, 1.5, 0);
         pointLight.position.copy(sun.position);
         scene.add(pointLight);
@@ -89,7 +83,6 @@ export default function PlanetScene() {
             const mesh = new THREE.Mesh(geometry, material);
             scene.add(mesh);
 
-            // 軌道リング
             const segments = 128;
             const orbitPoints = Array.from({ length: segments + 1 }, (_, i) => {
                 const angle = (i / segments) * Math.PI * 2;
@@ -121,18 +114,23 @@ export default function PlanetScene() {
                 p.mesh.position.z = p.orbitRadius * Math.sin(angle);
             });
 
-            if (zoom.current.active && cameraRef.current) {
+            const camera = cameraRef.current;
+            if (zoom.current.active && camera) {
                 zoom.current.progress += 0.02;
                 if (zoom.current.progress >= 1) {
                     zoom.current.progress = 1;
                     zoom.current.active = false;
                 }
-                cameraRef.current.position.lerpVectors(
-                    zoom.current.from,
-                    zoom.current.to,
-                    zoom.current.progress
-                );
-                cameraRef.current.lookAt(zoom.current.lookAt);
+                camera.position.lerpVectors(zoom.current.from, zoom.current.to, zoom.current.progress);
+                camera.lookAt(zoom.current.lookAt);
+            }
+
+            // 🌍 カメラが惑星に追従
+            if (followTargetRef.current && !zoom.current.active && camera) {
+                const targetPos = followTargetRef.current.position;
+                const offset = new THREE.Vector3(0, 10, 20);
+                camera.position.copy(targetPos.clone().add(offset));
+                camera.lookAt(targetPos);
             }
 
             renderer.render(scene, camera);
@@ -160,15 +158,20 @@ export default function PlanetScene() {
         zoom.current.lookAt.copy(target.mesh.position);
         zoom.current.to.copy(target.mesh.position).add(new THREE.Vector3(0, 10, 20));
         zoom.current.progress = 0;
+
+        followTargetRef.current = target.mesh; // 👈 追従対象設定
     };
 
     const resetZoom = () => {
         if (!cameraRef.current) return;
+
         zoom.current.active = true;
         zoom.current.from.copy(cameraRef.current.position);
         zoom.current.to.copy(defaultCameraPos);
         zoom.current.lookAt.copy(defaultLookAt);
         zoom.current.progress = 0;
+
+        followTargetRef.current = null; // 👈 追従解除
     };
 
     return (
@@ -179,7 +182,7 @@ export default function PlanetScene() {
                     {planetsData.map(p => (
                         <li key={p.name}>
                             <button
-                                className="text-white cursor-pointer"
+                                className="text-white cursor-pointer hover:underline"
                                 onClick={() => zoomToPlanet(p.name)}
                             >
                                 {p.name}
@@ -187,7 +190,10 @@ export default function PlanetScene() {
                         </li>
                     ))}
                     <li>
-                        <button className="px-2 py-1 border rounded text-white cursor-pointer" onClick={resetZoom}>
+                        <button
+                            className="mt-2 px-3 py-1 border rounded text-white cursor-pointer hover:bg-white hover:text-black"
+                            onClick={resetZoom}
+                        >
                             Reset
                         </button>
                     </li>
