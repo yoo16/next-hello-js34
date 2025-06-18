@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+// Three.js のインポート
 import * as THREE from 'three';
 
 type Planet = {
@@ -38,6 +39,7 @@ export default function PlanetScene() {
     const defaultCameraPos = new THREE.Vector3(0, 150, 250);
     const defaultLookAt = new THREE.Vector3(0, 0, 0);
 
+    // APIから惑星データを取得
     useEffect(() => {
         fetch('/api/planets')
             .then(res => res.json())
@@ -47,10 +49,12 @@ export default function PlanetScene() {
     useEffect(() => {
         if (planetsData.length === 0) return;
 
+        // シーンの初期化
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0x000000);
         sceneRef.current = scene;
 
+        // カメラを作成
         const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1500);
         camera.position.copy(defaultCameraPos);
         camera.lookAt(defaultLookAt);
@@ -61,15 +65,18 @@ export default function PlanetScene() {
         containerRef.current?.appendChild(renderer.domElement);
         rendererRef.current = renderer;
 
+        // 太陽
         const sun = new THREE.Mesh(
             new THREE.SphereGeometry(10, 32, 32),
             new THREE.MeshBasicMaterial({ color: 0xff5500 })
         );
         scene.add(sun);
 
+        // 環境光とポイントライト
         const ambient = new THREE.AmbientLight(0xffffff, 0.4);
         scene.add(ambient);
 
+        // ポイントライト
         const pointLight = new THREE.PointLight(0xffffff, 1.5, 0);
         pointLight.position.copy(sun.position);
         scene.add(pointLight);
